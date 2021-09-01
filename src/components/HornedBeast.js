@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Card';
 
 
@@ -23,21 +22,30 @@ class HornedBeast extends React.Component {
             vote: this.state.vote + 1
         })
 
+        this.props.showModal();
+        this.props. upDateSlectedData(this.props.title, this.props.image_url, this.props.description);
+
     }
 
 
     render() {
         return (<>
             <Col>
-                <Card className='card' style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={this.props.image_url} onClick={this.voteCounter} />
+                <Card className='card'
+                    style={{ width: '18rem' }}
+                    bg="dark"
+                    text="light"
+                    onClick={this.voteCounter}
+                >
+                    <Card.Img variant="top" src={this.props.image_url} />
                     <Card.Body>
                         <Card.Text>{this.props.title}</Card.Text>
                         <Card.Text>{this.props.description}</Card.Text>
                         <Card.Text>
-                            The Number of Favorites  : {this.state.vote} ❤️
+                            ❤️  : {this.state.vote}
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+
+
                     </Card.Body>
                 </Card>
             </Col>
