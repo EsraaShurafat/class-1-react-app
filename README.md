@@ -1,9 +1,11 @@
-# Lab: Class 02
+# Lab: Class 03
 
 ## Number and name of feature: 
 1. Display images. 
 2. Allow users to vote for their favorite beast.  
-3. Bootstrap.  
+3. Bootstrap. 
+4. Display a Modal.  
+ 
 
 
 ### Estimate of time needed to complete: 4 hours.
