@@ -16,6 +16,7 @@ class Main extends React.Component{
                    title={item.title}
                    image_url={item.image_url}
                    description={item.description}
+                   horns={item.horns}
                    upDateSlectedData={this.props.upDateSlectedData}
                    />
 

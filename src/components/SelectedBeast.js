@@ -15,6 +15,7 @@ class SelectedBeast extends React.Component {
                     <Modal.Body>
                         <img  style={{ width: '15rem' }} src={this.props.image_url} alt={this.props.image_url} title={this.props.title}></img>
                         <p>{this.props.description}</p>
+                      
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.props.handleClose}>
