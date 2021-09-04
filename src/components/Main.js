@@ -12,6 +12,7 @@ class Main extends React.Component{
            {this.props.data.map(item =>{
                return (
                    <HornedBeast 
+                   
                    showModal={this.props.showModal}
                    title={item.title}
                    image_url={item.image_url}

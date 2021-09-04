@@ -22,8 +22,8 @@ class HornedBeast extends React.Component {
             vote: this.state.vote + 1
         })
 
-        this.props.showModal();
-        this.props. upDateSlectedData(this.props.title, this.props.image_url, this.props.description);
+        
+        this.props. upDateSlectedData(this.props.title, this.props.image_url, this.props.description,this.props.horns);
 
     }
 
@@ -45,7 +45,7 @@ class HornedBeast extends React.Component {
                         <Card.Text>
                             ❤️  : {this.state.vote}
                         </Card.Text>
-                        <Card.Text>{this.props.horns}</Card.Text>
+                      
 
                     </Card.Body>
                 </Card>

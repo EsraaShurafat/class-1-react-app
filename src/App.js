@@ -2,10 +2,11 @@ import React from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import Data from './data/data.json';
+import Data from './data.json';
 import SelectedBeast from './components/SelectedBeast';
-import FormClass from './components/FormClass'
-import { NavItem } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form'
+
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -15,10 +16,7 @@ class App extends React.Component {
       image_url: '',
       description: '',
       horns:'',
-      dataArr:'',
-
-
-
+      filterdData:Data,
     }
 
   }
@@ -26,45 +24,37 @@ class App extends React.Component {
   handleClose = () => {
     this.setState({
       show: false
-    })
-  }
+    });
+  };
 
   showModal = () => {
-    this.setState({
-      show: true
-    })
-  }
+    this.setState({show: true});
+  };
 
-  upDateSlectedData = (title, image_url, description,dataArr) => {
+  upDateSlectedData = (title, image_url, description) => {
     this.setState({
       title: title,
       image_url: image_url,
       description: description,
-      dataArr:dataArr,
-      
+    });
+  };
 
-    })
-  }
+  handleSelect =(event)=>{
+    let newArr;
+    if(event.target.value==='all'){
+       newArr=Data;
+    }
+    else
+    {
+    newArr=Data.filter((n)=>n.horns===parseInt(event.target.value))
 
-  handleSelect(e) {
+    }
+
     this.setState({
-      selectValue: e.target.value,
-
-
-    })
-    this.filter();
-    this.upDateSlectedData();
- }
-
- filter = () =>{
-this.dataArr=Data;
-   this.dataArr.filter(n => {
-if (this.selectValue===n.horns) {
-  return n;
-}
-   })
- }
-
+      filterdData: newArr
+      });
+  
+   };
 
  
 
@@ -72,14 +62,25 @@ if (this.selectValue===n.horns) {
   render() {
     return (<>
      <Header />
-    <FormClass
-     handleSelect= {this.handleSelect}
-     />
-     
+     <Form>
+          <Form.Group controlId="horns">
+            <Form.Control as="select" onChange={this.handleSelect}>
+              <option value="1">one</option>
+              <option value="2">two</option>
+              <option value="3">three</option>
+              <option value="100">Wow</option>
+              <option value="all">All</option>
+ 
+            </Form.Control>
+          </Form.Group>
+        </Form>
+
       <Main
-        data={Data}
+     
+        data={this.state.filterdData}
         showModal={this.showModal}
         upDateSlectedData ={this.upDateSlectedData}
+
       />
       <SelectedBeast
         handleClose={this.handleClose}
